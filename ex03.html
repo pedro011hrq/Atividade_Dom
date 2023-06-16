@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    
+    td {
+      border: 1px solid rgb(255, 50, 50);
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    .selected {
+      background-color: yellow;
+    }
+  </style>
+<!--Colete do usuário (usando input de data) e
+    altere a cor do "Quadrado" dessa data no calendário
+dinamicamente. por exemplo, se o usuário escplher
+01/10/2022 - o quadrado com o dia 01 deve mudar de cor.-->
+</head>
+<body>
+  <h2>Calendário</h2>
+  
+  <div>
+    <label for="date-input">Selecione uma data:</label>
+    <input type="date" id="date-input">
+    <button onclick="changeColor()">Alterar cor</button>
+  </div>
+  
+  <table id="calendar">
+
+        <thead>
+            <tr>
+                <th>Dom</th>
+                <th>Seg</th>
+                <th>Ter</th>
+                <th>Qua</th>
+                <th>Qui</th>
+                <th>Sex</th>
+                <th>Sab</th>
+                <th>Dom</th>
+            </tr>
+        </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+        <td>16</td>
+        <td>17</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td>20</td>
+        <td>21</td>
+        <td>22</td>
+        <td>23</td>
+        <td>24</td>
+        <td>25</td>
+      </tr>
+      <tr>
+        <td>26</td>
+        <td>27</td>
+        <td>28</td>
+        <td>29</td>
+        <td>30</td>
+        <td>31</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <script>
+    function changeColor() {
+      var selectedDate = document.getElementById('date-input').value;
+      var calendar = document.getElementById('calendar');
+      var cells = calendar.getElementsByTagName('td');
+      
+      for (var i = 0; i < cells.length; i++) {
+        var cellDate = cells[i].textContent;
+        if (cellDate === selectedDate.slice(-2)) {
+          cells[i].classList.toggle('selected');
+        } else {
+          cells[i].classList.remove('selected');
+        }
+      }
+    }
+  </script>
+</body>
+</html>
